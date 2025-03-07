@@ -1,0 +1,4 @@
+Dados: D4,D6,D8,D10,D12 e D20
+Divisoes sempre sao arrendodadas para baixo
+cada personagem usa um numero certo de dados de ataque, e a quantidade de lados dele
+
