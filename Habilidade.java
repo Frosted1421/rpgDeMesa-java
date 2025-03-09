@@ -1,17 +1,17 @@
-public class habilidade {
+public class Habilidade {
     private Object nomeHabilidade;
     private Object descricaoHabilidade;
-    private habilidade proxima;
-    private habilidade anterior;
+    private Habilidade proxima;
+    private Habilidade anterior;
 
-    public habilidade(Object nomeNovo, Object descricaoNova) {
+    public Habilidade(Object nomeNovo, Object descricaoNova) {
 
         this.nomeHabilidade = nomeNovo;
         this.descricaoHabilidade = descricaoNova;
 
     }
 
-    public habilidade(Object nomeNovo, Object descricaoNova, habilidade nova) {
+    public Habilidade(Object nomeNovo, Object descricaoNova, Habilidade nova) {
 
         this.nomeHabilidade = nomeNovo;
         this.descricaoHabilidade = descricaoNova;
@@ -19,15 +19,15 @@ public class habilidade {
 
     }
 
-    public void setAnterior(habilidade anterior) {
+    public void setAnterior(Habilidade anterior) {
         this.anterior = anterior;
     }
 
-    public void setProxima(habilidade proxima) {
+    public void setProxima(Habilidade proxima) {
         this.proxima = proxima;
     }
 
-    public habilidade getProxima() {
+    public Habilidade getProxima() {
         return this.proxima;
     }
 

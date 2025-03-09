@@ -18,13 +18,17 @@ class ListaHabilidade {
 
     public void adiciona(Object nome, Object descricao) {
         if (this.qtd == 0) {
+
             this.primeiraHabilidade(nome, descricao);
+
         } else {
+
             Habilidade hab = new Habilidade(nome, descricao);
             this.ultima.setProxima(hab);
             hab.setAnterior(this.ultima);
             this.ultima = hab;
             this.qtd++;
+
         }
     }
 

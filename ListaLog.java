@@ -1,4 +1,4 @@
-public class listaLog {
+public class ListaLog {
     private log primeira;
     private log ultima;
     private int logsQtd;

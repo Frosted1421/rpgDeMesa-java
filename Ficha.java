@@ -8,17 +8,19 @@ public class Ficha {
     private int manaAtual;
     private float altura;
     private int idade;
-    private status statusPersonagem;
+    private String[] linguas;
+    private Status statusPersonagem;
     private ListaHabilidade minhasHabilidades = new ListaHabilidade();
     private ListaLog logPersonagem = new ListaLog();
+    private Raca racaPersonagem;
+    // TODO
     // private listaItens bolsa = new listaItens();
     // private listaProficiencias proficiencia = new listaProficiencia();
 
     public Ficha(
-            String nome, String classe, int hp, int manaMax, float altura, int idade, status statusNovo) {
+            String nome, String classe, int hp, int manaMax, float altura, int idade, Status statusNovo, Raca raca) {
 
         this.nome = nome;
-        // this.classe = classe;
         this.manaMax = manaMax;
         this.manaAtual = manaMax;
         this.hpMax = hp;
@@ -26,6 +28,15 @@ public class Ficha {
         this.statusPersonagem = statusNovo;
         this.altura = altura;
         this.idade = idade;
+        this.minhasHabilidades = raca.getHabilidadesIniciais();
+
+        this.statusPersonagem.carismaAlterar(raca.getBonusCarisma());
+        this.statusPersonagem.forcaAlterar(raca.getBonusForca());
+        this.statusPersonagem.sabedoriaAlterar(raca.getBonusSabedoria());
+        this.statusPersonagem.destrezaAlterar(raca.getBonusDestreza());
+        this.statusPersonagem.resistenciaAlterar(raca.getBonusResistencia());
+        this.statusPersonagem.inteligenciaAlterar(raca.getBonusInteligencia());
+
     }
 
     public void tomouDano(int dano) {
