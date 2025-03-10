@@ -32,6 +32,35 @@ class ListaHabilidade {
         }
     }
 
+    public void primeiraHabilidade(Object nome, Object descricao, int[] skillsBonusPts, int rodadasMaximas) {
+        if (this.qtd == 0) {
+            Habilidade hab = new Habilidade(nome, descricao, skillsBonusPts, rodadasMaximas);
+            this.primeira = hab;
+            this.ultima = hab;
+        } else {
+            Habilidade hab = new Habilidade(nome, descricao, skillsBonusPts, rodadasMaximas, primeira);
+            this.primeira.setAnterior(hab);
+            this.primeira = hab;
+        }
+        this.qtd++;
+    }
+
+    public void adiciona(Object nome, Object descricao, int[] skillsBonusPts, int rodadasMaximas) {
+        if (this.qtd == 0) {
+
+            this.primeiraHabilidade(nome, descricao, skillsBonusPts, rodadasMaximas);
+
+        } else {
+
+            Habilidade hab = new Habilidade(nome, descricao, skillsBonusPts, rodadasMaximas);
+            this.ultima.setProxima(hab);
+            hab.setAnterior(this.ultima);
+            this.ultima = hab;
+            this.qtd++;
+
+        }
+    }
+
     public int tamanho() {
         return this.qtd;
     }

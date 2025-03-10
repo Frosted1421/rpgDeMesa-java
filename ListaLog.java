@@ -3,6 +3,7 @@ public class ListaLog {
     private log ultima;
     private int logsQtd;
 
+    // todo filtrar logs
     public void primeiroLog(Object autor, Object log, Object dia, Object acao, Object receptor) {
         if (this.logsQtd == 0) {
             log nova = new log(autor, log, dia, acao, receptor);
@@ -27,6 +28,7 @@ public class ListaLog {
             this.logsQtd++;
         }
     }
+
     /*
      * public boolean contem(Object elemento) {
      * log atual = this.primeira;
@@ -61,33 +63,6 @@ public class ListaLog {
             atual = atual.getProxima();
         }
         return atual;
-    }
-
-    public void removeDoComeco() {
-        if (!this.posicaoOcupada(0)) {
-            throw new IllegalArgumentException("Posição não existe");
-        }
-
-        this.primeira = this.primeira.getProxima();
-        this.logsQtd--;
-
-        if (this.logsQtd == 0) {
-            this.ultima = null;
-        }
-    }
-
-    public void removeDoFim() {
-        if (!this.posicaoOcupada(this.logsQtd - 1)) {
-            throw new IllegalArgumentException("Posição não existe");
-        }
-        if (this.logsQtd == 1) {
-            this.removeDoComeco();
-        } else {
-            log penultima = this.ultima.getAnterior();
-            penultima.setProxima(null);
-            this.ultima = penultima;
-            this.logsQtd--;
-        }
     }
 
     public String toString() {
