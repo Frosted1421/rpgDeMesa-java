@@ -1,4 +1,3 @@
-
 class Status {
     private int dadosMaximos;
     private int numeroDeLadosDado;
@@ -147,24 +146,38 @@ class Status {
         return xpProximo;
     }
 
+    public int numLadosDados() {
+        return numeroDeLadosDado;
+    }
+
+    public void aumentarNumLadosDados(int aumenta) {
+        this.numeroDeLadosDado += aumenta;
+    }
+
+    public int getDadosQuantidade() {
+        return this.dadosMaximos;
+    }
+
+    public void aumentarDados(int aumenta) {
+        this.dadosMaximos += aumenta;
+
+    }
+
+    @Override
     public String toString() {
 
         StringBuilder builder = new StringBuilder();
 
-        builder.append(
-                "Level:" + level + " XP:" + xp + '\n'
-                        + "XP para o proximo level:" + xpProximoLevel() + '\n'
-                        + "Dados:" + dadosMaximos + "Faces:" + numeroDeLadosDado + '\n'
-                        + "Pontos de Habilidade:" + "\n"
-                        + "- Sabedoria:" + sabedoria + '\n'
-                        + "- Forca:" + forca + '\n'
-                        + "- Inteligencia:" + inteligencia + '\n'
-                        + "- Destreza:" + destreza + '\n'
-                        + "- Carisma:" + carisma + '\n'
-                        + "- Resistencia:" + resistencia + '\n' + '\n' + '\n'
-                        + "Personagem Vivo:" + (vivo ? "sim" : "nao")
+        builder.append("Level:").append(level).append(" XP:").append(xp).append('\n')
+                .append("XP para o proximo level:").append(xpProximoLevel()).append('\n')
+                .append("Dados:").append(dadosMaximos).append("Faces").append(numeroDeLadosDado).append('\n')
+                .append("Pontos de Habilidae").append('\n')
+                .append("- Sabedoria:").append(sabedoria).append('\n')
+                .append("- Forca:").append(forca).append('\n')
+                .append("- Inteligenca:").append(inteligencia).append('\n')
+                .append("- Destreza:").append(destreza).append('\n')
+                .append("- Resistencia:").append(resistencia).append('\n');
 
-        );
         return builder.toString();
     }
 

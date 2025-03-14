@@ -1,16 +1,21 @@
 class Raca {
-    private String raca;
-    private int bonusForca;
-    private int bonusDestreza;
-    private int bonusResistencia;
-    private int bonusInteligencia;
-    private int bonusSabedoria;
-    private int bonusCarisma;
-    ListaHabilidade listaHabilRaca = new ListaHabilidade();
+    private final String raca;
+    private final int bonusForca;
+    private final int bonusDestreza;
+    private final int bonusResistencia;
+    private final int bonusInteligencia;
+    private final int bonusSabedoria;
+    private final int bonusCarisma;
+
+    ListaHabilidadePassivas listaHabilRaca = new ListaHabilidadePassivas();
+
+    ListaHabilidadesAtivas listaHabilAtiva = new ListaHabilidadesAtivas();
 
     public Raca(
             String nome, int bonusF, int bonusD, int bonusR, int bonusS, int bonusC, int bonusI,
-            ListaHabilidade listaInicial) {
+            ListaHabilidadePassivas listaInicial, ListaHabilidadesAtivas listaHabilAtiva) {
+
+        this.listaHabilAtiva = listaHabilAtiva;
         this.raca = nome;
         this.bonusForca = bonusF;
         this.bonusDestreza = bonusD;
@@ -19,10 +24,19 @@ class Raca {
         this.bonusSabedoria = bonusS;
         this.bonusCarisma = bonusC;
         this.listaHabilRaca = listaInicial;
+        this.listaHabilAtiva = listaHabilAtiva;
     }
 
-    public ListaHabilidade getHabilidadesIniciais() {
-        return listaHabilRaca;
+    public String getNomeRaca() {
+        return raca;
+    }
+
+    public ListaHabilidadePassivas getHabilidadesPassivasIniciais() {
+        return this.listaHabilRaca;
+    }
+
+    public ListaHabilidadesAtivas getHabilidadesAtivasRaca() {
+        return this.listaHabilAtiva;
     }
 
     public int getBonusForca() {
@@ -49,6 +63,8 @@ class Raca {
         return bonusResistencia;
     }
 
+    @Override
+    // todo
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append(

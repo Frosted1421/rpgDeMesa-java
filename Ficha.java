@@ -1,5 +1,5 @@
-public class Ficha {
-    private String nome;
+class Ficha {
+    private final String nome;
     // private class classe;
 
     private int hpMax;
@@ -10,9 +10,12 @@ public class Ficha {
     private int idade;
     private String[] linguas;
     private Status statusPersonagem;
-    private ListaHabilidade minhasHabilidades = new ListaHabilidade();
+
+    private ListaHabilidadePassivas habildiadesPassivas = new ListaHabilidadePassivas();
+    private ListaHabilidadesAtivas listaHabilAtiva = new ListaHabilidadesAtivas();
+
     private ListaLog logPersonagem = new ListaLog();
-    private Raca racaPersonagem;
+    private final String racaPersonagem;
     // TODO
     // private listaItens bolsa = new listaItens();
     // private listaProficiencias proficiencia = new listaProficiencia();
@@ -28,7 +31,10 @@ public class Ficha {
         this.statusPersonagem = statusNovo;
         this.altura = altura;
         this.idade = idade;
-        this.minhasHabilidades = raca.getHabilidadesIniciais();
+
+        this.racaPersonagem = raca.getNomeRaca();
+        this.habildiadesPassivas = raca.getHabilidadesPassivasIniciais();
+        this.listaHabilAtiva = raca.getHabilidadesAtivasRaca();
 
         this.statusPersonagem.carismaAlterar(raca.getBonusCarisma());
         this.statusPersonagem.forcaAlterar(raca.getBonusForca());
@@ -60,12 +66,16 @@ public class Ficha {
         return manaAtual;
     }
 
+    public String getRaca() {
+        return this.racaPersonagem;
+    }
+
     public void regeneraGastaMana(int mana) {
 
         if (this.manaAtual + mana > this.manaMax) {
             manaAtual = manaMax;
         }
-        // considerando que podemos drenar a mana do inimigo
+        // considerando que podemos drenar a mana
         else if (manaAtual + mana > 0) {
             this.manaAtual += mana;
         } else if (this.manaAtual + mana < 0) {
@@ -80,6 +90,9 @@ public class Ficha {
     public void novoLog(Object autor, Object receptor, Object acao, Object log) {
 
         this.logPersonagem.adiciona(log, log, log, acao, receptor);
+    }
 
+    public void mostrarLogPersonagem() {
+        logPersonagem.toString();
     }
 }
