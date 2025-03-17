@@ -1,4 +1,6 @@
-class Raca {
+import java.io.Serializable;
+
+public class Raca implements Serializable {
     private final String raca;
     private final int bonusForca;
     private final int bonusDestreza;

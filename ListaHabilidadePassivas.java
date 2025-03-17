@@ -1,4 +1,6 @@
-class ListaHabilidadePassivas {
+import java.io.Serializable;
+
+public class ListaHabilidadePassivas implements Serializable {
     private Habilidade primeira;
     private Habilidade ultima;
     private int qtd;
@@ -36,7 +38,6 @@ class ListaHabilidadePassivas {
         return this.qtd;
     }
 
-    // todo
     public String toString() {
         if (this.qtd == 0) {
             return "Sem habilidades";

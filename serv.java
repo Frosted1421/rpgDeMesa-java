@@ -6,8 +6,12 @@ public class serv {
    ServerSocket ssocket;
    String lercaixa;
    PrintStream soutput;
-   DataInputStream sinput;
+
+   // DataInputStream sinput;
    Socket csk, clisoket;
+
+   ObjectOutputStream soutputObject;
+   ObjectInputStream sinput;
 
    public serv() {
       pt = 4321;
@@ -25,15 +29,15 @@ public class serv {
          while (true) {
             clisoket = ssocket.accept();
             csk = clisoket;
-            soutput = new PrintStream(csk.getOutputStream());
-            sinput = new DataInputStream(csk.getInputStream());
 
+            soutputObject = new ObjectOutputStream(csk.getOutputStream());
+            sinput = new ObjectInputStream(csk.getInputStream());
             boolean flag = false;
 
-            String men = sinput.readLine();
-            System.out.println("Cliente Enviou : " + men);
-            if (!men.isEmpty()) {
-               System.out.println("Servidor recebeu:" + men);
+            Ficha novaFicha = (Ficha) sinput.readObject();
+
+            if (novaFicha != null) {
+               System.out.println(novaFicha.toString());
             }
 
          }

@@ -1,4 +1,6 @@
-public class ListaLog {
+import java.io.Serializable;
+
+public class ListaLog implements Serializable {
     private log primeira;
     private log ultima;
     private int logsQtd;
@@ -65,6 +67,7 @@ public class ListaLog {
         return atual;
     }
 
+    @Override
     public String toString() {
 
         if (this.logsQtd == 0) {

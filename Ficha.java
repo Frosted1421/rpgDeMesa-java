@@ -1,4 +1,7 @@
-class Ficha {
+
+import java.io.Serializable;
+
+public class Ficha implements Serializable {
     private final String nome;
     // private class classe;
 
@@ -10,12 +13,14 @@ class Ficha {
     private int idade;
     private String[] linguas;
     private Status statusPersonagem;
+    private String nomeRaca;
 
     private ListaHabilidadePassivas habildiadesPassivas = new ListaHabilidadePassivas();
     private ListaHabilidadesAtivas listaHabilAtiva = new ListaHabilidadesAtivas();
 
     private ListaLog logPersonagem = new ListaLog();
     private final String racaPersonagem;
+
     // TODO
     // private listaItens bolsa = new listaItens();
     // private listaProficiencias proficiencia = new listaProficiencia();
@@ -43,6 +48,10 @@ class Ficha {
         this.statusPersonagem.resistenciaAlterar(raca.getBonusResistencia());
         this.statusPersonagem.inteligenciaAlterar(raca.getBonusInteligencia());
 
+    }
+
+    public String getNomeRaca() {
+        return this.nomeRaca;
     }
 
     public void tomouDano(int dano) {
@@ -94,5 +103,12 @@ class Ficha {
 
     public void mostrarLogPersonagem() {
         logPersonagem.toString();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append("Nome:").append(this.nome).append('\n').append(statusPersonagem.toString());
+        return str.toString();
     }
 }

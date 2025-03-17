@@ -1,4 +1,6 @@
-public class HabilidadeAtiva {
+import java.io.Serializable;
+
+public class HabilidadeAtiva implements Serializable {
 
     private HabilidadeAtiva proxima;
     private HabilidadeAtiva anterior;
@@ -25,6 +27,10 @@ public class HabilidadeAtiva {
 
     public boolean estaAtivada() {
         return this.ativa;
+    }
+
+    public int[] getSkillBonusPts() {
+        return this.skillsBonusPts;
     }
 
     public HabilidadeAtiva(

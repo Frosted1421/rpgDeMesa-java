@@ -1,4 +1,6 @@
-class ListaHabilidadesAtivas {
+import java.io.Serializable;
+
+public class ListaHabilidadesAtivas implements Serializable {
     private HabilidadeAtiva primeira;
     private HabilidadeAtiva ultima;
     private int qtd;
@@ -76,5 +78,53 @@ class ListaHabilidadesAtivas {
 
         throw new IllegalArgumentException("Habilidade não encontrada");
 
+    }
+    /*
+     * private int[] skillsBonusPts = {
+     * 0, // forca
+     * 0, // destreza
+     * 0, // resistencia
+     * 0, // inteligencia
+     * 0, // sabedoria
+     * 0 // carisma
+     * };
+     * 
+     */
+
+    @Override
+    public String toString() {
+
+        StringBuilder ativasToString = new StringBuilder();
+        ativasToString.append("Habiliades Ativas:").append(this.qtd).append('\n')
+                .append("Habiliades Ativadas:").append(this.ativadas).append('\n').append('\n');
+
+        HabilidadeAtiva atual = primeira;
+        int i;
+        ativasToString.append("Habilidades do personagem:").append('\n');
+        for (i = 0; i < this.qtd - 1; i++) {
+            int statusbonus[] = atual.getSkillBonusPts();
+
+            ativasToString.append("Nome:").append(atual.getNome()).append('\n')
+                    .append("Descrição:").append(atual.getDescricao()).append('\n')
+                    .append("Bonus de skills:").append('\n')
+                    .append("Força:").append(statusbonus[0]).append(" - Destreza:").append(statusbonus[1])
+                    .append(" - Resistencia:").append(statusbonus[2]).append("Inteligencia:").append(statusbonus[3])
+                    .append(" - Sabedoria:").append(statusbonus[4]).append(" - Carisma:").append(statusbonus[5])
+                    .append('\n');
+            atual = atual.getProxima();
+
+        }
+
+        int statusbonus[] = atual.getSkillBonusPts();
+
+        ativasToString.append("Nome:").append(atual.getNome()).append('\n')
+                .append("Descrição:").append(atual.getDescricao()).append('\n')
+                .append("Bonus de skills:").append('\n')
+                .append("Força:").append(statusbonus[0]).append(" - Destreza:").append(statusbonus[1])
+                .append(" - Resistencia:").append(statusbonus[2]).append(" - Inteligencia:").append(statusbonus[3])
+                .append(" - Sabedoria:").append(statusbonus[4]).append(" - Carisma:").append(statusbonus[5])
+                .append('\n');
+
+        return ativasToString.toString();
     }
 }

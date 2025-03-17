@@ -1,4 +1,6 @@
-class Habilidade {
+import java.io.Serializable;
+
+class Habilidade implements Serializable {
 
     private Habilidade proxima;
     private Habilidade anterior;

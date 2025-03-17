@@ -1,4 +1,6 @@
-public class log {
+import java.io.Serializable;
+
+public class log implements Serializable {
     private log proxima;
     private log anterior;
 
