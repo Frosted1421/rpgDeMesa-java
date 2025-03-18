@@ -18,7 +18,10 @@ public class ListaLog implements Serializable {
         }
         this.logsQtd++;
     }
-
+    public int getLogsQtd(){
+        return this.logsQtd;
+    }
+    
     public void adiciona(Object nome, Object log, Object dia, Object acao, Object receptor) {
         if (this.logsQtd == 0) {
             this.primeiroLog(nome, log, dia, acao, receptor);
@@ -30,19 +33,6 @@ public class ListaLog implements Serializable {
             this.logsQtd++;
         }
     }
-
-    /*
-     * public boolean contem(Object elemento) {
-     * log atual = this.primeira;
-     * while (atual != null) {
-     * if (atual.getElemento().equals(elemento)) {
-     * return true;
-     * }
-     * atual = atual.getProxima();
-     * }
-     * return false;
-     * }
-     */
 
     public int tamanho() {
         return this.logsQtd;
@@ -66,8 +56,83 @@ public class ListaLog implements Serializable {
         }
         return atual;
     }
+    
+    public String toStringFiltroAutor(Object autor){
+        StringBuilder builder = new StringBuilder();
+        log atual = primeira;
+        int i;
+        for (i = 0; i < this.logsQtd - 1; i++) {
+        
+            if(atual.getAutor()==autor){
+                
+                builder.append(atual.getMensagem());
+                builder.append('\n');
 
+            }
+            atual = atual.getProxima();    
+        }
+        if(atual.getAutor()==autor){
+                
+            builder.append(atual.getMensagem());
+            builder.append('\n');
+
+        }
+    
+        return builder.toString().isEmpty()?"Não possui resultados":builder.toString();
+    }
+    
+    public String toStringFiltroReceptor(Object receptor){
+        StringBuilder builder = new StringBuilder();
+        log atual = primeira;
+        int i;
+        for (i = 0; i < this.logsQtd - 1; i++) {
+        
+            if(atual.getReceptor()==receptor){
+                
+                builder.append(atual.getMensagem());
+                builder.append('\n');
+
+            }
+            atual = atual.getProxima();    
+        }
+        if(atual.getReceptor()==receptor){
+                
+            builder.append(atual.getMensagem());
+            builder.append('\n');
+
+        }
+     
+        return builder.toString().isEmpty()?"Não possui resultados":builder.toString();
+    }
+    
+    public String toStringFiltroAcao(Object acao){
+        StringBuilder builder = new StringBuilder();
+        log atual = primeira;
+        int i;
+
+        for (i = 0; i < this.logsQtd - 1; i++) {
+        
+            if(atual.getAcao()==acao){
+                
+                builder.append(atual.getMensagem());
+                builder.append('\n');
+
+            }
+            atual = atual.getProxima();    
+        }
+        
+        if(atual.getAcao()==acao){
+                
+            builder.append(atual.getMensagem());
+            builder.append('\n');
+
+        }
+        
+      
+        return builder.toString().isEmpty()?"Não possui resultados":builder.toString();
+    }
     @Override
+
     public String toString() {
 
         if (this.logsQtd == 0) {

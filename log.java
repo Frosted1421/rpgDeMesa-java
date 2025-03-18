@@ -26,19 +26,18 @@ public class log implements Serializable {
         this.diahora = diahora;
         this.receptor = receptor;
     }
-
-    public Object getNome() {
-        return autor;
+    public Object getReceptor(){
+        return this.receptor;
     }
-
+    public Object getAutor(){
+        return this.autor;
+    }
     public Object getLog() {
         return log;
     }
-
     public Object getDiaHora() {
         return diahora;
     }
-
     public Object getAcao() {
         return acao;
     }
