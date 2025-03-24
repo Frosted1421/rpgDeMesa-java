@@ -31,19 +31,6 @@ public class ListaLog implements Serializable {
         }
     }
 
-    /*
-     * public boolean contem(Object elemento) {
-     * log atual = this.primeira;
-     * while (atual != null) {
-     * if (atual.getElemento().equals(elemento)) {
-     * return true;
-     * }
-     * atual = atual.getProxima();
-     * }
-     * return false;
-     * }
-     */
-
     public int tamanho() {
         return this.logsQtd;
     }

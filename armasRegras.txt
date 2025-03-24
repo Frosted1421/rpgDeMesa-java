@@ -1,0 +1,22 @@
+Armas
+
+Definidas por classe, raça e talentos
+Proficiencia permite usar uma arma especifica
+
+armas sao divididas em simples e marciais
+simples todos podem utilizar, marciais apenas com proficiencia
+
+armas melee usam força, distancia usa destreza
+caso possua finesse, pode utilizar escolher qual usar
+
+algumas armas possuem tempo para recarregar
+algumas armas podem ser arremessadas
+
+algumas armas podem utilizar duas maos, modificando o dano
+armas a distancia tem espaço de ataque maximo e minimo
+armas longo alcance NÃO permitem finesse
+armas longo alcance precisam de duas mãos
+armas de longo alcance tem tipo de municao, arco e flecha nao podem usar virotes 
+algumas armas de longo alcance (principalmente bestas) precisam utilizar acao para recarregar 
+
+pagina 149

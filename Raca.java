@@ -8,6 +8,7 @@ public class Raca implements Serializable {
     private final int bonusInteligencia;
     private final int bonusSabedoria;
     private final int bonusCarisma;
+    private final String[] linguas;
 
     ListaHabilidadePassivas listaHabilRaca = new ListaHabilidadePassivas();
 
@@ -15,7 +16,8 @@ public class Raca implements Serializable {
 
     public Raca(
             String nome, int bonusF, int bonusD, int bonusR, int bonusS, int bonusC, int bonusI,
-            ListaHabilidadePassivas listaInicial, ListaHabilidadesAtivas listaHabilAtiva) {
+            ListaHabilidadePassivas listaInicial, ListaHabilidadesAtivas listaHabilAtiva,
+            String[] linguas) {
 
         this.listaHabilAtiva = listaHabilAtiva;
         this.raca = nome;
@@ -27,6 +29,11 @@ public class Raca implements Serializable {
         this.bonusCarisma = bonusC;
         this.listaHabilRaca = listaInicial;
         this.listaHabilAtiva = listaHabilAtiva;
+        this.linguas = linguas;
+    }
+
+    public String[] getLinguas() {
+        return this.linguas;
     }
 
     public String getNomeRaca() {
