@@ -25,8 +25,8 @@ public class ArmaBranca implements Serializable {
     private boolean equipadoDuasMaos;
 
     public ArmaBranca(
-            String nomeArma, String tipoArma,
-            int preco, int danoUmaMao, int danoDuasMaos, int peso, String tipoDano, boolean arremessavel,
+            String nomeArma, String tipoArma, int preco, int danoUmaMao, int danoDuasMaos, int peso, String tipoDano,
+            boolean arremessavel,
             boolean duasMaos, boolean leve, boolean media, boolean pesada,
             boolean finesse, boolean precisaProficiencia, boolean somenteDuasMaos) {
         this.nomeArma = nomeArma;

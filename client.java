@@ -32,6 +32,7 @@ class client {
        * Ficha ficha = new Ficha("Mithrandir", "Mago", 200, 400, 1.9f, 40000, status1,
        * racaValar);
        */
+
       coutputObject.writeObject(ficha);
 
       String str2 = (String) cinput.readObject();

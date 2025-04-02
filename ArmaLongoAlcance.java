@@ -54,7 +54,8 @@ public class ArmaLongoAlcance implements Serializable {
         return this.tipoDano;
     }
 
-    public String toSTring() {
+    @Override
+    public String toString() {
         StringBuilder descricaoArma = new StringBuilder();
         descricaoArma.append("Nome da Arma:").append(nomeArma).append('\n')
                 .append("Tipo de dano:").append(tipoDano).append(" Dano:").append(dano).append('\n')
