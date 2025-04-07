@@ -8,18 +8,25 @@ class Habilidade implements Serializable {
     private Object nomeHabilidade;
     private Object descricaoHabilidade;
 
-    public Habilidade(Object nomeNovo, Object descricaoNova) {
+    private final int levelLibera;
 
+    public Habilidade(Object nomeNovo, Object descricaoNova, int levelLibera) {
+        this.levelLibera = levelLibera;
         this.nomeHabilidade = nomeNovo;
         this.descricaoHabilidade = descricaoNova;
 
     }
 
-    public Habilidade(Object nomeNovo, Object descricaoNova, Habilidade nova) {
+    public Habilidade(Object nomeNovo, Object descricaoNova, Habilidade nova, int levelLibera) {
+        this.levelLibera = levelLibera;
         this.nomeHabilidade = nomeNovo;
         this.descricaoHabilidade = descricaoNova;
         this.proxima = nova;
 
+    }
+
+    public int getLevelLibera() {
+        return this.levelLibera;
     }
 
     public void setAnterior(Habilidade anterior) {

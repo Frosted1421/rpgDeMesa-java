@@ -5,11 +5,13 @@ public class HabilidadeAtiva implements Serializable {
     private HabilidadeAtiva proxima;
     private HabilidadeAtiva anterior;
 
-    private Object nomeHabilidade;
-    private Object descricaoHabilidade;
+    private final Object nomeHabilidade;
+    private final Object descricaoHabilidade;
 
     private int rodadasMaximas;
     private int rodadaContador = 0;
+    private final int levelLibera;
+
     private Boolean ativa = false;
 
     private int[] skillsBonusPts = {
@@ -21,20 +23,8 @@ public class HabilidadeAtiva implements Serializable {
             0 // carisma
     };
 
-    public boolean excedeuRodadas() {
-        return this.rodadaContador >= this.rodadasMaximas;
-    }
-
-    public boolean estaAtivada() {
-        return this.ativa;
-    }
-
-    public int[] getSkillBonusPts() {
-        return this.skillsBonusPts;
-    }
-
     public HabilidadeAtiva(
-            Object nomeNovo, Object descricaoNova, int[] skillsPontos, int rodadasMaximas) {
+            Object nomeNovo, Object descricaoNova, int[] skillsPontos, int rodadasMaximas, int levelLibera) {
 
         if (skillsPontos.length != 6) {
             throw new IllegalArgumentException("Habilidades erradas");
@@ -45,11 +35,12 @@ public class HabilidadeAtiva implements Serializable {
 
         this.nomeHabilidade = nomeNovo;
         this.descricaoHabilidade = descricaoNova;
-
+        this.levelLibera = levelLibera;
     }
 
     public HabilidadeAtiva(
-            Object nomeNovo, Object descricaoNova, int[] skillsPontos, int rodadasMaximas, HabilidadeAtiva nova) {
+            Object nomeNovo, Object descricaoNova, int[] skillsPontos, int rodadasMaximas,
+            HabilidadeAtiva nova, int levelLibera) {
 
         if (skillsPontos.length != 6 || rodadasMaximas < 0) {
             throw new IllegalArgumentException("Habilidades erradas");
@@ -61,10 +52,10 @@ public class HabilidadeAtiva implements Serializable {
         this.nomeHabilidade = nomeNovo;
         this.descricaoHabilidade = descricaoNova;
         this.proxima = nova;
-
+        this.levelLibera = levelLibera;
     }
 
-    public Status ativaHabilidade(Status recebido) {
+    public Status ativaHabilidade(Status recebido, int rodadasMaximas) {
 
         Status ativado = recebido;
         this.ativa = true;
@@ -103,6 +94,22 @@ public class HabilidadeAtiva implements Serializable {
         }
 
         return recebido;
+    }
+
+    public boolean excedeuRodadas() {
+        return this.rodadaContador >= this.rodadasMaximas;
+    }
+
+    public int getLevelLibera() {
+        return this.levelLibera;
+    }
+
+    public boolean estaAtivada() {
+        return this.ativa;
+    }
+
+    public int[] getSkillBonusPts() {
+        return this.skillsBonusPts;
     }
 
     public void proximaRodada() {

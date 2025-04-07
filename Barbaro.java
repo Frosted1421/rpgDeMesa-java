@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 //todo
 public class Barbaro extends Atributos {
 
@@ -17,6 +20,10 @@ public class Barbaro extends Atributos {
         }
     }
 
+    public int getAtivadoresRaiva() {
+        return this.rageAtivadores;
+    }
+
     public int getDanoRaiva() {
         return this.rageDano;
     }
@@ -30,6 +37,7 @@ public class Barbaro extends Atributos {
         if (super.getLevel() > level) {
             this.novoRaivaDano(super.getLevel());
         }
+
     }
 
 }

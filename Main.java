@@ -51,7 +51,12 @@ public class Main {
                 Atributos novoAtributo = new Barbaro("Mac", 1, 3, 2, 3, 1, "Barbaro");
 
                 if (novoAtributo instanceof Barbaro barbaro) {
-                        System.out.println(barbaro.getDanoRaiva());
+                        System.out.println(barbaro.getLevel());
+                        barbaro.recebeXp(1000);
+
+                        System.out.println(barbaro.getLevel());
+
+                        System.out.println(barbaro.getBonusProficiencia());
                 }
         }
 }

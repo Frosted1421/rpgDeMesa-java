@@ -1,6 +1,10 @@
+
+import java.util.ArrayList;
+
 public class Classe {
 
     private final Atributos atributo;
+
     private final boolean isBarbaro;
     private final boolean isMago;
     private final boolean isHalfling;
@@ -25,12 +29,22 @@ public class Classe {
         }
     }
 
-    // todo
-    public void AtivarRaiva(Status status) {
-        if (!isBarbaro) {
-            throw new IllegalArgumentException("Impossivel ativar Rage, classe não é barbaro");
-        } else {
+    public ArrayList<HabilidadeAtiva> getNovasHabilidadeAtivas() {
+        return atributo.novoLevelHabilidadesAtivas();
 
-        }
     }
+
+    public ArrayList<Habilidade> getNovasHabilidadesPassivas() {
+        return atributo.novoLevelHabilidadesPassivas();
+    }
+
+    public void recebeXP(int xp) {
+        this.atributo.recebeXp(xp);
+    }
+
+    public int getLevel() {
+
+        return this.atributo.getLevel();
+    }
+
 }

@@ -5,27 +5,24 @@ public class ListaHabilidadePassivas implements Serializable {
     private Habilidade ultima;
     private int qtd;
 
-    public void primeiraHabilidade(Object nome, Object descricao) {
+    public void primeiraHabilidade(Habilidade hab) {
         if (this.qtd == 0) {
-            Habilidade hab = new Habilidade(nome, descricao);
             this.primeira = hab;
             this.ultima = hab;
         } else {
-            Habilidade hab = new Habilidade(nome, descricao, primeira);
             this.primeira.setAnterior(hab);
             this.primeira = hab;
         }
         this.qtd++;
     }
 
-    public void adiciona(Object nome, Object descricao) {
+    public void adiciona(Habilidade hab) {
         if (this.qtd == 0) {
 
-            this.primeiraHabilidade(nome, descricao);
+            this.primeiraHabilidade(hab);
 
         } else {
 
-            Habilidade hab = new Habilidade(nome, descricao);
             this.ultima.setProxima(hab);
             hab.setAnterior(this.ultima);
             this.ultima = hab;

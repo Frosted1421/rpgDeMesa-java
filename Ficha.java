@@ -1,46 +1,32 @@
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Ficha implements Serializable {
 
-    // Nome, Level, xp, vida, mana (slots de feitiço), peso maximo e velocidade de
-    // movimento
-    private Atributos novo = new Barbaro(null, 0, 0, 0, 0, 0, null);
-    // pontos de skill, alterados por habiolidaes ativas
-    // todo: Feitiços aplicados como invisibilidade, boost de força, velocidade,
-    // cegueira ou envenenamento
     private Status statusPersonagem;
 
-    // listas de habilidades, ativas mudam skills points ou possuem rounds maximos
-    // para ficarem ativos
+    private ListaHabilidadePassivas habilidadesPassivasPersonagem;
+    private ListaHabilidadesAtivas habilidadesAtivasPersonagem;
 
-    // passivas sempre estao ativadas
-    private ListaHabilidadePassivas habildiadesPassivasPersonagem;
-    private ListaHabilidadesAtivas listaHabilAtivaPersonagem;
-
-    // armazena todas as açoes relacioandas ao personagem, criando um historico de
-    // ações
-    // futuramente sera utilizado para verificar se a ficha de um local esta
-    // sincronizada com a ficha de outro.
     private ListaLog logPersonagem = new ListaLog();
 
-    // Armazena os itens como ferramentas, itens de cura, munição e etc;
     private BolsaItens bolsaPersonagem;
 
-    // Armazena as proeficiencias do personagem, como; linguas, ferramentas, armas,
-    // armas marciais, armaduras, fraquezas e vantagens
     private Proficiencias proficienciasPersonagem;
 
-    // TODO
-    // private Classe classe;
+    private Classe classe;
+
+    private int level = 1;
 
     public Ficha(
             String nome, String classe, int manaMax, int altura, int idade, int pesoPersoangem,
-            Status statusNovo, Raca raca, int qtdDados, int numFacesDado) {
+            Status statusNovo, Raca raca, int qtdDados, int numFacesDado, Atributos recebeClasse) {
 
-        // aplico os bonus que a raça proporciona e descarto o objeto
-        this.habildiadesPassivasPersonagem = raca.getHabilidadesPassivasIniciais();
-        this.listaHabilAtivaPersonagem = raca.getHabilidadesAtivasRaca();
+        this.classe = new Classe(recebeClasse);
+
+        this.habilidadesPassivasPersonagem = raca.getHabilidadesPassivasIniciais();
+        this.habilidadesAtivasPersonagem = raca.getHabilidadesAtivasRaca();
         this.statusPersonagem.carismaAlterar(raca.getBonusCarisma());
         this.statusPersonagem.forcaAlterar(raca.getBonusForca());
         this.statusPersonagem.sabedoriaAlterar(raca.getBonusSabedoria());
@@ -49,8 +35,27 @@ public class Ficha implements Serializable {
         this.statusPersonagem.inteligenciaAlterar(raca.getBonusInteligencia());
 
         // this.atributos = new Atributos(nome, statusPersonagem.getForca(), manaMax,
-        // altura, idade, pesoPersoangem,
-        // raca.getLinguas(), raca.getNomeRaca(), qtdDados, numFacesDado);
+        // altura, idade, pesoPersoangem,raca.getLinguas(), raca.getNomeRaca(),
+        // qtdDados, numFacesDado);
+    }
+
+    public void novoXp(int xp) {
+        this.classe.recebeXP(xp);
+        if (this.classe.getLevel() > this.level) {
+            this.level = classe.getLevel();
+            ArrayList<Habilidade> novaP = this.classe.getNovasHabilidadesPassivas();
+
+            ArrayList<HabilidadeAtiva> novaA = this.classe.getNovasHabilidadeAtivas();
+
+            for (int x = 0; x <= novaP.size() - 1; x++) {
+                this.habilidadesPassivasPersonagem.adiciona(novaP.get(x));
+            }
+
+            for (int x = 0; x <= novaA.size() - 1; x++) {
+                this.habilidadesAtivasPersonagem.adiciona(novaA.get(x));
+            }
+
+        }
     }
 
     // todo

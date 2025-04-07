@@ -6,16 +6,14 @@ public class ListaHabilidadesAtivas implements Serializable {
     private int qtd;
     private int ativadas;
 
-    private void primeiraHabilidade(Object nome, Object descricao, int[] skillsBonusPts, int rodadasMaximas) {
+    private void primeiraHabilidade(HabilidadeAtiva hab) {
         if (this.qtd == 0) {
 
-            HabilidadeAtiva hab = new HabilidadeAtiva(nome, descricao, skillsBonusPts, rodadasMaximas);
             this.primeira = hab;
             this.ultima = hab;
 
         } else {
 
-            HabilidadeAtiva hab = new HabilidadeAtiva(nome, descricao, skillsBonusPts, rodadasMaximas, primeira);
             this.primeira.setAnterior(hab);
             this.primeira = hab;
 
@@ -24,14 +22,13 @@ public class ListaHabilidadesAtivas implements Serializable {
         this.qtd++;
     }
 
-    public void adiciona(Object nome, Object descricao, int[] skillsBonusPts, int rodadasMaximas) {
+    public void adiciona(HabilidadeAtiva hab) {
         if (this.qtd == 0) {
 
-            this.primeiraHabilidade(nome, descricao, skillsBonusPts, rodadasMaximas);
+            this.primeiraHabilidade(hab);
 
         } else {
 
-            HabilidadeAtiva hab = new HabilidadeAtiva(nome, descricao, skillsBonusPts, rodadasMaximas);
             this.ultima.setProxima(hab);
             hab.setAnterior(this.ultima);
             this.ultima = hab;

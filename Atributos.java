@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Atributos {
     private String nome;
     private int hpMax;
@@ -8,6 +10,9 @@ public class Atributos {
     private int qtdDados;
     private int numLadosDado;
     private int level;
+
+    private int aumentarVida = 0;
+    private int aumentarStatus = 0;
 
     private int xp;
 
@@ -35,6 +40,9 @@ public class Atributos {
 
     private String nomeRaca;
 
+    private ArrayList<HabilidadeAtiva> habilidadeAtivas = new ArrayList<>();
+    private ArrayList<Habilidade> habilidadesPassivas = new ArrayList<>();
+
     public Atributos(
             String nome, int forca, int slotsFeitiço, int altura, int idade,
             int pesoAtualDoPersonagem, String nomeRaca, int qtdDados, int numLadosDado) {
@@ -57,6 +65,10 @@ public class Atributos {
 
         this.pesoMaximo = forca * 15;
         this.pesoAtual = 0;
+    }
+
+    public int getBonusProficiencia() {
+        return this.bonusProficiencia;
     }
 
     private void novoBonusProficiencia() {
@@ -85,11 +97,55 @@ public class Atributos {
         }
     }
 
-    // todo
     private void passouNivel() {
-        level++;
+        this.level += 1;
+        this.aumentarVida += 1;
+        if (this.level % 4 == 0 || this.level == 19) {
+            this.aumentarStatus += 1;
+        }
+
         this.novoBonusProficiencia();
 
+        if (this.xp >= XPLEVELUP[level]) {
+            this.passouNivel();
+        }
+
+    }
+
+    public ArrayList<HabilidadeAtiva> novoLevelHabilidadesAtivas() {
+
+        ArrayList<HabilidadeAtiva> retorno = new ArrayList<>();
+
+        for (int x = 0; x < this.habilidadeAtivas.size(); x++) {
+
+            HabilidadeAtiva comparar = this.habilidadeAtivas.get(x);
+
+            if (comparar.getLevelLibera() >= this.level) {
+                retorno.add(comparar);
+                habilidadeAtivas.remove(comparar);
+            }
+
+        }
+
+        return retorno;
+    }
+
+    public ArrayList<Habilidade> novoLevelHabilidadesPassivas() {
+
+        ArrayList<Habilidade> retorno = new ArrayList<>();
+
+        for (int x = 0; x < this.habilidadesPassivas.size(); x++) {
+
+            Habilidade comparar = this.habilidadesPassivas.get(x);
+
+            if (comparar.getLevelLibera() >= this.level) {
+                retorno.add(comparar);
+                habilidadesPassivas.remove(comparar);
+            }
+
+        }
+
+        return retorno;
     }
 
     public int xpProximoLevel() {
@@ -100,8 +156,101 @@ public class Atributos {
         return xpProximo;
     }
 
-    public int numLadosDados() {
+    public int getNumLadosDados() {
         return numLadosDado;
+    }
+
+    public void aumentarVida(int dado, boolean padrao) {
+        if (this.aumentarVida > 0) {
+            if (padrao) {
+                int vida = this.numLadosDado / 2;
+                this.hpMax += vida;
+            } else if (dado > this.numLadosDado || dado < 0) {
+                throw new IllegalArgumentException("Dado maior/menor do que permitido no personagem");
+            } else {
+                this.hpMax += dado;
+            }
+        }
+    }
+
+    public void aumentarStatus(Status status, String status1) {
+        if (this.aumentarStatus > 0) {
+            switch (status1) {
+                case "dex":
+                    status.destrezaAlterar(2);
+                    break;
+                case "for":
+                    status.forcaAlterar(2);
+                    break;
+                case "res":
+                    status.resistenciaAlterar(2);
+                    break;
+                case "inte":
+                    status.inteligenciaAlterar(2);
+                    break;
+                case "sabe":
+                    status.sabedoriaAlterar(2);
+                    break;
+                case "cari":
+                    status.carismaAlterar(2);
+                    break;
+            }
+
+            this.aumentarStatus -= 1;
+        } else {
+            throw new IllegalArgumentException("Impossivel alterar status no momento");
+        }
+
+    }
+
+    public void aumentarStatus(Status status, String status1, String status2) {
+        if (this.aumentarStatus > 0) {
+            switch (status1) {
+                case "dex":
+                    status.destrezaAlterar(1);
+                    break;
+                case "for":
+                    status.forcaAlterar(1);
+                    break;
+                case "res":
+                    status.resistenciaAlterar(1);
+                    break;
+                case "inte":
+                    status.inteligenciaAlterar(1);
+                    break;
+                case "sabe":
+                    status.sabedoriaAlterar(1);
+                    break;
+                case "cari":
+                    status.carismaAlterar(1);
+                    break;
+            }
+            switch (status2) {
+                case "dex":
+                    status.destrezaAlterar(1);
+                    break;
+                case "for":
+                    status.forcaAlterar(1);
+                    break;
+                case "res":
+                    status.resistenciaAlterar(1);
+                    break;
+                case "inte":
+                    status.inteligenciaAlterar(1);
+                    break;
+                case "sabe":
+                    status.sabedoriaAlterar(1);
+                    break;
+                case "cari":
+                    status.carismaAlterar(1);
+                    break;
+            }
+
+            this.aumentarStatus -= 1;
+        } else {
+            throw new IllegalArgumentException("Impossivel alterar status no momento");
+        }
+
     }
 
     public void aumentarNumLadosDados(int aumenta) {
