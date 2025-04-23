@@ -62,11 +62,22 @@ public class ListaHabilidadesAtivas implements Serializable {
         return statusPersonagem;
     }
 
+    public void prorrogaHabilidade(String nome) {
+        HabilidadeAtiva atual = primeira;
+        while (atual != null) {
+            if (atual.getNome().equals(nome) && !atual.estaAtivada()) {
+                primeira.prorrogaHabilidade();
+            }
+        }
+    }
+
     public Status ativaHabiliade(Status statusPersonagem, String nome) {
+
         HabilidadeAtiva atual = primeira;
 
         while (atual != null) {
             if (atual.getNome().equals(nome) && !atual.estaAtivada()) {
+
                 this.ativadas++;
                 return statusPersonagem = atual.ativaHabilidade(statusPersonagem);
 
@@ -76,6 +87,24 @@ public class ListaHabilidadesAtivas implements Serializable {
         throw new IllegalArgumentException("Habilidade não encontrada");
 
     }
+
+    public Status ativaHabiliade(Status statusPersonagem, String nome, int rodadasMaximas) {
+
+        HabilidadeAtiva atual = primeira;
+
+        while (atual != null) {
+            if (atual.getNome().equals(nome) && !atual.estaAtivada()) {
+
+                this.ativadas++;
+                return statusPersonagem = atual.ativaHabilidade(statusPersonagem, rodadasMaximas);
+
+            }
+        }
+
+        throw new IllegalArgumentException("Habilidade não encontrada");
+
+    }
+
     /*
      * private int[] skillsBonusPts = {
      * 0, // forca

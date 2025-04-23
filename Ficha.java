@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 public class Ficha implements Serializable {
 
-    private Status statusPersonagem;
 
     private ListaHabilidadePassivas habilidadesPassivasPersonagem;
     private ListaHabilidadesAtivas habilidadesAtivasPersonagem;
+
+    private Status statusPersonagem;
 
     private ListaLog logPersonagem = new ListaLog();
 
@@ -21,7 +22,8 @@ public class Ficha implements Serializable {
 
     public Ficha(
             String nome, String classe, int manaMax, int altura, int idade, int pesoPersoangem,
-            Status statusNovo, Raca raca, int qtdDados, int numFacesDado, Atributos recebeClasse) {
+            Status statusNovo, Raca raca, int qtdDados, int numFacesDado, Atributos recebeClasse,
+            BolsaItens bolsaInicial) {
 
         this.classe = new Classe(recebeClasse);
 
@@ -34,9 +36,11 @@ public class Ficha implements Serializable {
         this.statusPersonagem.resistenciaAlterar(raca.getBonusResistencia());
         this.statusPersonagem.inteligenciaAlterar(raca.getBonusInteligencia());
 
+        this.bolsaPersonagem = bolsaInicial;
         // this.atributos = new Atributos(nome, statusPersonagem.getForca(), manaMax,
         // altura, idade, pesoPersoangem,raca.getLinguas(), raca.getNomeRaca(),
         // qtdDados, numFacesDado);
+        
     }
 
     public void novoXp(int xp) {
@@ -60,9 +64,9 @@ public class Ficha implements Serializable {
 
     // todo
     // enviar ao log a cada açao
-    public void novoLog(Object autor, Object receptor, Object acao, Object log) {
+    public void novoLog(log novo) {
 
-        this.logPersonagem.adiciona(log, log, log, acao, receptor);
+        this.logPersonagem.adiciona(novo);
     }
 
     public String mostrarLogPersonagem() {

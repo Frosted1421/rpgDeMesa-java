@@ -6,24 +6,22 @@ public class ListaLog implements Serializable {
     private int logsQtd;
 
     // todo filtrar logs
-    public void primeiroLog(Object autor, Object log, Object dia, Object acao, Object receptor) {
+
+    public void primeiroLog(log nova) {
         if (this.logsQtd == 0) {
-            log nova = new log(autor, log, dia, acao, receptor);
             this.primeira = nova;
             this.ultima = nova;
         } else {
-            log nova = new log(autor, log, dia, acao, receptor, primeira);
             this.primeira.setAnterior(nova);
             this.primeira = nova;
         }
         this.logsQtd++;
     }
 
-    public void adiciona(Object nome, Object log, Object dia, Object acao, Object receptor) {
+    public void adiciona(log nova) {
         if (this.logsQtd == 0) {
-            this.primeiroLog(nome, log, dia, acao, receptor);
+            this.primeiroLog(nova);
         } else {
-            log nova = new log(nome, log, dia, acao, receptor);
             this.ultima.setProxima(nova);
             nova.setAnterior(this.ultima);
             this.ultima = nova;
@@ -41,17 +39,36 @@ public class ListaLog implements Serializable {
 
     }
 
-    private log pegaCelula(int posicao) {
+    private log pegaCelula() {
 
-        if (!this.posicaoOcupada(posicao)) {
+        if (this.logsQtd == 0) {
 
-            throw new IllegalArgumentException("Posição não existe");
+            throw new IllegalArgumentException("Não existe logs");
+        } else {
+            return this.ultima;
         }
-        log atual = primeira;
-        for (int i = 0; i < posicao; i++) {
-            atual = atual.getProxima();
+    }
+
+    public ListaLog ultimosDez() {
+        ListaLog retorno = new ListaLog();
+
+        if (logsQtd> 0) {
+            log anterior = new log(ultima);
+            int cont = 0;
+            int maximo = 9;
+            if (logsQtd < 10) {
+                maximo = logsQtd;
+            }
+            retorno.adiciona(anterior);
+            while (anterior.getAnterior() != null && cont < maximo) {
+                log controle = new log(anterior.getAnterior());
+                retorno.adiciona(controle);
+                anterior = new log(anterior.getAnterior());
+                cont++;
+            }
         }
-        return atual;
+        System.out.println(retorno.toString());
+        return retorno;
     }
 
     @Override

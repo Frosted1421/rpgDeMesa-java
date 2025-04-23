@@ -4,13 +4,13 @@ public class log implements Serializable {
     private log proxima;
     private log anterior;
 
-    private Object autor;
-    private Object receptor;
-    private Object acao;
-    private Object log;
-    private Object diahora;
+    private final String autor;
+    private final String receptor;
+    private final String acao;
+    private final String log;
+    private final String diahora;
 
-    public log(Object autor, Object log, Object diahora, Object acao, Object receptor, log proxima) {
+    public log(String autor, String log, String diahora, String acao, String receptor, log proxima) {
         this.autor = autor;
         this.log = log;
         this.acao = acao;
@@ -19,28 +19,41 @@ public class log implements Serializable {
         this.proxima = proxima;
     }
 
-    public log(Object autor, Object log, Object diahora, Object acao, Object receptor) {
+    public log(String autor, String log, String diahora, String acao, String receptor) {
         this.autor = autor;
         this.log = log;
         this.acao = acao;
         this.diahora = diahora;
         this.receptor = receptor;
     }
-
-    public Object getNome() {
-        return autor;
+    
+    public log(log novo){
+        this.autor=novo.getNome();
+        this.log=novo.getLog();
+        this.acao=novo.getAcao();
+        this.diahora=novo.getDiaHora();
+        this.receptor=novo.getReceptor();
+        this.anterior=novo.getAnterior();
+        this.proxima=novo.getProxima();
     }
 
-    public Object getLog() {
-        return log;
+    public String getReceptor(){
+        return this.receptor;
+    }
+    public String getNome() {
+        return "this.autor";
     }
 
-    public Object getDiaHora() {
-        return diahora;
+    public String getLog() {
+        return this.log;
     }
 
-    public Object getAcao() {
-        return acao;
+    public String getDiaHora() {
+        return this.diahora;
+    }
+
+    public String getAcao() {
+        return this.acao;
     }
 
     public String getMensagem() {
@@ -48,9 +61,7 @@ public class log implements Serializable {
         return msg;
     }
 
-    public log getAnterior() {
-        return anterior;
-    }
+
 
     public void setAnterior(log anterior) {
         this.anterior = anterior;
@@ -62,6 +73,9 @@ public class log implements Serializable {
 
     public log getProxima() {
         return proxima;
+    }
+    public log getAnterior() {
+        return anterior;
     }
 
 }

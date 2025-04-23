@@ -55,7 +55,7 @@ public class HabilidadeAtiva implements Serializable {
         this.levelLibera = levelLibera;
     }
 
-    public Status ativaHabilidade(Status recebido, int rodadasMaximas) {
+    public Status ativaHabilidade(Status recebido) {
 
         Status ativado = recebido;
         this.ativa = true;
@@ -71,6 +71,26 @@ public class HabilidadeAtiva implements Serializable {
         return ativado;
     }
 
+    public Status ativaHabilidade(Status recebido, int rodadasMaximas) {
+
+        Status ativado = recebido;
+        this.ativa = true;
+        this.rodadaContador = 1;
+        this.rodadasMaximas=rodadasMaximas;
+
+        recebido.forcaAlterar(skillsBonusPts[0]);
+        recebido.destrezaAlterar(skillsBonusPts[1]);
+        recebido.resistenciaAlterar(skillsBonusPts[2]);
+        recebido.inteligenciaAlterar(skillsBonusPts[3]);
+        recebido.sabedoriaAlterar(skillsBonusPts[4]);
+        recebido.carismaAlterar(skillsBonusPts[5]);
+
+        return ativado;
+    }
+    public void prorrogaHabilidade(){
+        this.rodadaContador=1;
+    }
+
     public Status desativaHabilidade(Status recebido) {
 
         if (estaAtivada()) {
@@ -82,12 +102,12 @@ public class HabilidadeAtiva implements Serializable {
             this.rodadaContador = 0;
             this.ativa = false;
 
-            recebido.forcaAlterar(-1 * skillsBonusPts[0]);
-            recebido.destrezaAlterar(-1 * skillsBonusPts[1]);
-            recebido.resistenciaAlterar(-1 * skillsBonusPts[2]);
-            recebido.inteligenciaAlterar(-1 * skillsBonusPts[3]);
-            recebido.sabedoriaAlterar(-1 * skillsBonusPts[4]);
-            recebido.carismaAlterar(-1 * skillsBonusPts[5]);
+            recebido.forcaAlterar(-skillsBonusPts[0]);
+            recebido.destrezaAlterar(-skillsBonusPts[1]);
+            recebido.resistenciaAlterar(-skillsBonusPts[2]);
+            recebido.inteligenciaAlterar(-skillsBonusPts[3]);
+            recebido.sabedoriaAlterar(-skillsBonusPts[4]);
+            recebido.carismaAlterar(-skillsBonusPts[5]);
 
         } else {
             throw new IllegalArgumentException("HabilidadeAtiva não execeu a quantidade de rodadas ativadas");

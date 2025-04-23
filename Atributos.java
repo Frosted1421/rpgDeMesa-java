@@ -45,7 +45,8 @@ public class Atributos {
 
     public Atributos(
             String nome, int forca, int slotsFeitiço, int altura, int idade,
-            int pesoAtualDoPersonagem, String nomeRaca, int qtdDados, int numLadosDado) {
+            int pesoAtualDoPersonagem, String nomeRaca, int qtdDados, int numLadosDado,
+            ArrayList<Habilidade> habilidadesPassivas,ArrayList<HabilidadeAtiva> habilidadeAtivas) {
 
         this.nome = nome;
         this.pesoCorporal = pesoAtualDoPersonagem;
@@ -65,6 +66,9 @@ public class Atributos {
 
         this.pesoMaximo = forca * 15;
         this.pesoAtual = 0;
+
+        this.habilidadeAtivas=habilidadeAtivas;
+        this.habilidadesPassivas=habilidadesPassivas;
     }
 
     public int getBonusProficiencia() {
@@ -115,14 +119,13 @@ public class Atributos {
     public ArrayList<HabilidadeAtiva> novoLevelHabilidadesAtivas() {
 
         ArrayList<HabilidadeAtiva> retorno = new ArrayList<>();
-
+        // todo dando problema com o loop
         for (int x = 0; x < this.habilidadeAtivas.size(); x++) {
 
             HabilidadeAtiva comparar = this.habilidadeAtivas.get(x);
 
-            if (comparar.getLevelLibera() >= this.level) {
+            if (comparar.getLevelLibera() <= this.level) {
                 retorno.add(comparar);
-                habilidadeAtivas.remove(comparar);
             }
 
         }
@@ -133,14 +136,13 @@ public class Atributos {
     public ArrayList<Habilidade> novoLevelHabilidadesPassivas() {
 
         ArrayList<Habilidade> retorno = new ArrayList<>();
-
+        int adicionadas=0;
         for (int x = 0; x < this.habilidadesPassivas.size(); x++) {
 
             Habilidade comparar = this.habilidadesPassivas.get(x);
 
-            if (comparar.getLevelLibera() >= this.level) {
+            if (comparar.getLevelLibera() <= this.level) {
                 retorno.add(comparar);
-                habilidadesPassivas.remove(comparar);
             }
 
         }
