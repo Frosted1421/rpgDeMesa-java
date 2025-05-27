@@ -67,14 +67,55 @@ public class Atributos {
         this.pesoMaximo = forca * 15;
         this.pesoAtual = 0;
 
-        this.habilidadeAtivas=habilidadeAtivas;
-        this.habilidadesPassivas=habilidadesPassivas;
+        this.habilidadeAtivas=ordenaHabAtiva(habilidadeAtivas);
+        this.habilidadesPassivas=ordenaHabPass(habilidadesPassivas);
     }
 
     public int getBonusProficiencia() {
         return this.bonusProficiencia;
     }
-
+    private ArrayList<HabilidadeAtiva> ordenaHabAtiva(ArrayList<HabilidadeAtiva>habArray){
+            ArrayList<HabilidadeAtiva> habAtiva = habArray;
+             boolean trocou;
+             HabilidadeAtiva temp;
+             int i, j;
+             int n=habAtiva.size();
+            for (i = 0; i < n - 1; i++) {
+                trocou = false;
+                for (j = 0; j < n - i - 1; j++) {
+                    if (habAtiva.get(j).getLevelLibera() > habAtiva.get(j+1).getLevelLibera()) {        
+                        temp = new HabilidadeAtiva(habAtiva.get(j));
+                        habAtiva.set(j,habAtiva.get(j+1));
+                        habAtiva.set(j+1,temp);
+                        trocou = true;
+                    }
+                }
+                    if (trocou == false)
+                        break;
+            }  
+            return habAtiva;
+    }
+    private ArrayList<Habilidade> ordenaHabPass(ArrayList<Habilidade>habArray){
+            ArrayList<Habilidade> habPass=habArray;
+             boolean trocou;
+             Habilidade temp;
+             int i, j;
+             int n=habPass.size();
+            for (i = 0; i < n - 1; i++) {
+                trocou = false;
+                for (j = 0; j < n - i - 1; j++) {
+                    if (habPass.get(j).getLevelLibera() > habPass.get(j+1).getLevelLibera()) {        
+                        temp = new Habilidade(habPass.get(j));
+                        habPass.set(j,habPass.get(j+1));
+                        habPass.set(j+1,temp);
+                        trocou = true;
+                    }
+                }
+                    if (trocou == false)
+                        break;
+            }  
+            return habPass;
+    }
     private void novoBonusProficiencia() {
         if ((this.level - 1) % 4 == 0) {
             this.bonusProficiencia += 1;

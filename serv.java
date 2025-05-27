@@ -15,7 +15,8 @@ public class serv {
 
    public serv() {
       pt = 4321;
-      try // Excecao
+      // Excecao
+      try 
       {
          ssocket = new ServerSocket(pt);
 

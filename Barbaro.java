@@ -8,8 +8,14 @@ public class Barbaro extends Atributos {
     private int rageAtivadores = 2;
     private int rageDano = 2;
 
-    public Barbaro(String nome, int forca, int slotsFeitico, int altura, int idade, int pesoAtual, String nomeRaca) {
-        super(nome, forca, slotsFeitico, altura, idade, pesoAtual, nomeRaca, 1, 10);
+    
+    public Barbaro(
+        String nome, int forca, int slotsFeitico, int altura, int idade, int pesoAtual, String nomeRaca
+        ,ArrayList<Habilidade> habPass,ArrayList<HabilidadeAtiva> habAtiva) {
+ 
+            
+          super(nome, forca, slotsFeitico, altura, idade, pesoAtual, nomeRaca, 1, 10,habPass,habAtiva);
+           
     }
 
     private void novoRaivaDano(int level) {

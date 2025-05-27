@@ -22,7 +22,25 @@ public class HabilidadeAtiva implements Serializable {
             0, // sabedoria
             0 // carisma
     };
+    public HabilidadeAtiva(HabilidadeAtiva habAti){
+        this.rodadasMaximas=habAti.getRodadasMaximas();
+        this.skillsBonusPts=habAti.getSkillBonusPts();
+        this.nomeHabilidade=habAti.getNome();
+        this.descricaoHabilidade=habAti.getDescricao();
+        this.levelLibera=habAti.getLevelLibera();
+    }
 
+    public HabilidadeAtiva(HabilidadeAtiva habAti,HabilidadeAtiva nova){
+        
+        this.rodadasMaximas=habAti.getRodadasMaximas();
+        this.skillsBonusPts=habAti.getSkillBonusPts();
+        
+        this.nomeHabilidade=habAti.getNome();
+        this.descricaoHabilidade=habAti.getDescricao();
+        this.levelLibera=habAti.getLevelLibera();
+        this.proxima=nova;
+    }
+    
     public HabilidadeAtiva(
             Object nomeNovo, Object descricaoNova, int[] skillsPontos, int rodadasMaximas, int levelLibera) {
 
@@ -39,8 +57,9 @@ public class HabilidadeAtiva implements Serializable {
     }
 
     public HabilidadeAtiva(
-            Object nomeNovo, Object descricaoNova, int[] skillsPontos, int rodadasMaximas,
-            HabilidadeAtiva nova, int levelLibera) {
+            Object nomeNovo, Object descricaoNova, int[] skillsPontos, 
+            int rodadasMaximas,HabilidadeAtiva nova, int levelLibera
+        ) {
 
         if (skillsPontos.length != 6 || rodadasMaximas < 0) {
             throw new IllegalArgumentException("Habilidades erradas");
@@ -155,5 +174,8 @@ public class HabilidadeAtiva implements Serializable {
 
     public Object getDescricao() {
         return descricaoHabilidade;
+    }
+    public int getRodadasMaximas(){
+        return this.rodadasMaximas;
     }
 }

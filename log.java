@@ -33,8 +33,8 @@ public class log implements Serializable {
         this.acao=novo.getAcao();
         this.diahora=novo.getDiaHora();
         this.receptor=novo.getReceptor();
-        this.anterior=novo.getAnterior();
-        this.proxima=novo.getProxima();
+        this.anterior=new log(novo.getAnterior());
+        this.proxima=new log(novo.getProxima());
     }
 
     public String getReceptor(){

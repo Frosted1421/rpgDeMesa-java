@@ -4,8 +4,8 @@ import java.time.temporal.ChronoUnit;
 
 class main {
     public static void main(String[] args) {
-        LocalDate dia = LocalDate.now(); // Create a date object
-        System.out.println(dia); // Display the current date
+        LocalDate dia = LocalDate.now(); 
+        System.out.println(dia);
         LocalTime hora = LocalTime.now().truncatedTo(ChronoUnit.MINUTES);
         System.out.println(hora);
         String tempoTotal = dia.toString() + ' ' + hora.toString();

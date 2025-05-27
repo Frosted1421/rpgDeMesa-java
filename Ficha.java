@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Ficha implements Serializable {
 
-
+    private Atributos meusAtributos;
     private ListaHabilidadePassivas habilidadesPassivasPersonagem;
     private ListaHabilidadesAtivas habilidadesAtivasPersonagem;
 
@@ -19,30 +19,13 @@ public class Ficha implements Serializable {
     private Classe classe;
 
     private int level = 1;
-
+    //todo
     public Ficha(
-            String nome, String classe, int manaMax, int altura, int idade, int pesoPersoangem,
-            Status statusNovo, Raca raca, int qtdDados, int numFacesDado, Atributos recebeClasse,
-            BolsaItens bolsaInicial) {
-
-        this.classe = new Classe(recebeClasse);
-
-        this.habilidadesPassivasPersonagem = raca.getHabilidadesPassivasIniciais();
-        this.habilidadesAtivasPersonagem = raca.getHabilidadesAtivasRaca();
-        this.statusPersonagem.carismaAlterar(raca.getBonusCarisma());
-        this.statusPersonagem.forcaAlterar(raca.getBonusForca());
-        this.statusPersonagem.sabedoriaAlterar(raca.getBonusSabedoria());
-        this.statusPersonagem.destrezaAlterar(raca.getBonusDestreza());
-        this.statusPersonagem.resistenciaAlterar(raca.getBonusResistencia());
-        this.statusPersonagem.inteligenciaAlterar(raca.getBonusInteligencia());
-
-        this.bolsaPersonagem = bolsaInicial;
-        // this.atributos = new Atributos(nome, statusPersonagem.getForca(), manaMax,
-        // altura, idade, pesoPersoangem,raca.getLinguas(), raca.getNomeRaca(),
-        // qtdDados, numFacesDado);
-        
+        Atributos meusAtributos,BolsaItens bolsaInicial
+        ){
+        this.meusAtributos=meusAtributos;
+        bolsaPersonagem=bolsaInicial;
     }
-
     public void novoXp(int xp) {
         this.classe.recebeXP(xp);
         if (this.classe.getLevel() > this.level) {
