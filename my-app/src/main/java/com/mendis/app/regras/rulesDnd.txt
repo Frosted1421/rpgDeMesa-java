@@ -1,0 +1,31 @@
+//cola de regras 
+
+ados: D4,D6,D8,D10,D12 e D20
+Divisoes sempre sao arrendodadas para baixo
+cada personagem usa um numero certo de dados de ataque, e a quantidade de lados dele
+
+up de level: 
+0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 10000,
+120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000
+
+level maximo=20
+
+xp nunca é perdido
+
+atributos nao podem ter menos de 8 e mais de 20
+
+armadura divididas em 3 classes com um total de 12 no jogo
+
+roll de dados no rest recupera HP
+
+raça nao define o alinhamento do personagem, isso fica criterio do jogador
+
+raças contem subraças com diferentes atributos
+
+raças podem ter uma proeficiencia com certa arma
+
+novas skills e proeficiencias podem ser adiquiridas durante a campanha //permitir maleabilidade
+
+pontos de habilidade NÃO podem ser redistribuidos 
+
+
