@@ -3,7 +3,7 @@ import com.mendis.app.Atributos;
 import com.mendis.app.Habilidades.*;
 import java.util.ArrayList;
 
-//todo
+
 public class Barbaro extends Atributos {
 
     private boolean rageAtivada = false;
@@ -37,7 +37,6 @@ public class Barbaro extends Atributos {
     public int getAtivadoresRaiva() {
         return this.rageAtivadores;
     }
-
     public int getDanoRaiva() {
         return this.rageDano;
     }

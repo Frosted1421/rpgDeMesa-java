@@ -1,8 +1,8 @@
-package com.mendis.app.ClassesRacas;
+package com.mendis.app.Classes;
 import com.mendis.app.*;
 import com.mendis.app.Habilidades.*;
 import java.util.ArrayList;
-
+import com.mendis.app.Racas.*;
 public class Classe {
 
     private final Atributos atributo;

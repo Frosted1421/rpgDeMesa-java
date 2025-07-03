@@ -114,11 +114,11 @@ public class HabilidadeAtiva implements Serializable {
 
     public Status desativaHabilidade(Status recebido) {
 
-        if (estaAtivada()) {
+        if (!estaAtivada()) {
             throw new IllegalArgumentException("HabilidadeAtiva ja desativada");
 
         }
-        if (excedeuRodadas()) {
+        else if (excedeuRodadas()) {
 
             this.rodadaContador = 0;
             this.ativa = false;
@@ -131,13 +131,16 @@ public class HabilidadeAtiva implements Serializable {
             recebido.carismaAlterar(-skillsBonusPts[5]);
 
         } else {
-            throw new IllegalArgumentException("HabilidadeAtiva não execeu a quantidade de rodadas ativadas");
+            throw new IllegalArgumentException("Habilidade Ativa não execeu a quantidade de rodadas ativadas");
         }
 
         return recebido;
     }
 
     public boolean excedeuRodadas() {
+        if(rodadasMaximas==0){
+            throw new IllegalArgumentException("Habilidade Ativa não pode ser desativada.");
+        }
         return this.rodadaContador >= this.rodadasMaximas;
     }
 
@@ -160,6 +163,7 @@ public class HabilidadeAtiva implements Serializable {
     public void setAnterior(HabilidadeAtiva hab){
         this.anterior=hab;
     }
+
     public void setProxima(HabilidadeAtiva proxima) {
         this.proxima = proxima;
     }

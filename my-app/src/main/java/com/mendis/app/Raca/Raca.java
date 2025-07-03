@@ -1,6 +1,7 @@
 package com.mendis.app.ClassesRacas;
 import com.mendis.app.Habilidades.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Raca implements Serializable {
     private final String raca;
@@ -12,16 +13,14 @@ public class Raca implements Serializable {
     private final int bonusCarisma;
     private final String[] linguas;
 
-    ListaHabilidadePassivas listaHabilRaca = new ListaHabilidadePassivas();
-
-    ListaHabilidadesAtivas listaHabilAtiva = new ListaHabilidadesAtivas();
+    ArrayList<HabilidadeAtiva> listaHabiAtiva = new ArrayList<>();
+    ArrayList<Habilidade> listaHabiPassiva=new ArrayList<>();
 
     public Raca(
             String nome, int bonusF, int bonusD, int bonusR, int bonusS, int bonusC, int bonusI,
-            ListaHabilidadePassivas listaInicial, ListaHabilidadesAtivas listaHabilAtiva,
+            ArrayList<Habilidade> listaInicial,  ArrayList<HabilidadeAtiva> listaHabilAtiva,
             String[] linguas) {
 
-        this.listaHabilAtiva = listaHabilAtiva;
         this.raca = nome;
         this.bonusForca = bonusF;
         this.bonusDestreza = bonusD;
@@ -29,8 +28,8 @@ public class Raca implements Serializable {
         this.bonusInteligencia = bonusI;
         this.bonusSabedoria = bonusS;
         this.bonusCarisma = bonusC;
-        this.listaHabilRaca = listaInicial;
-        this.listaHabilAtiva = listaHabilAtiva;
+        this.listaHabiPassiva = listaInicial;
+        this.listaHabiAtiva = listaHabilAtiva;
         this.linguas = linguas;
     }
 
@@ -42,12 +41,12 @@ public class Raca implements Serializable {
         return raca;
     }
 
-    public ListaHabilidadePassivas getHabilidadesPassivasIniciais() {
-        return this.listaHabilRaca;
+    public ArrayList<Habilidade> getHabilidadesPassivasIniciais() {
+        return this.listaHabiPassiva;
     }
 
-    public ListaHabilidadesAtivas getHabilidadesAtivasRaca() {
-        return this.listaHabilAtiva;
+    public ArrayList<HabilidadeAtiva> getHabilidadesAtivasRaca() {
+        return this.listaHabiAtiva;
     }
 
     public int getBonusForca() {

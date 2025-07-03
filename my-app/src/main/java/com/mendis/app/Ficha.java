@@ -8,7 +8,9 @@ import java.util.ArrayList;
 
 public class Ficha implements Serializable {
 
-    
+    private ListaHabilidadePassivas habilidadesPassivasPersonagem;
+
+    private ListaHabilidadesAtivas habilidadesAtivasPersonagem;
     
     private Status statusPersonagem;
 
@@ -21,13 +23,19 @@ public class Ficha implements Serializable {
     private Classe classe;
 
     private int level = 1;
-    //todo
-    public class Ficha(
-    )
+    
+    public Ficha(
+        Status status, InicialPadrao inicial, BolsaItens bolsa, String nome,
+         int idade, int peso, int altura, Raca raca, Atributos atributos
+    ){
+        Atributos at=new Atributos(nome, altura, altura, altura, idade, peso, nome, idade, idade, inicial);
+        this.classe=new Classe(atributos);
+    }
     
     public void novoXp(int xp) {
         this.classe.recebeXP(xp);
         if (this.classe.getLevel() > this.level) {
+
             this.level = classe.getLevel();
             ArrayList<Habilidade> novaP = this.classe.getNovasHabilidadesPassivas();
 

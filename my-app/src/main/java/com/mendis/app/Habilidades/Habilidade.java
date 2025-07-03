@@ -8,8 +8,8 @@ public class Habilidade implements Serializable {
 
     private Object nomeHabilidade;
     private Object descricaoHabilidade;
+    private  int levelLibera;
     
-    private final int levelLibera;
     public Habilidade(Habilidade hab){
         this.nomeHabilidade=hab.getNome();
         this.descricaoHabilidade=hab.getDescricao();
@@ -41,7 +41,9 @@ public class Habilidade implements Serializable {
     public int getLevelLibera() {
         return this.levelLibera;
     }
-
+    public void alteraLevelLibera(int novoLevel){
+        this.levelLibera=novoLevel;
+    }
     public void setAnterior(Habilidade anterior) {
         this.anterior = anterior;
     }

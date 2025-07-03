@@ -10,6 +10,7 @@ public class Status implements Serializable {
     private int inteligencia;
     private int sabedoria;
     private int carisma;
+    private boolean campeaoPrimal=false;
 
     public Status(
             int level, int xp, int forca, int destreza, int resistencia, int inteligencia, int sabedoria,
@@ -24,20 +25,22 @@ public class Status implements Serializable {
     }
 
     public void resistenciaAlterar(int qtd) {
-        if (this.resistencia + qtd > 20) {
+        int max=20;
+        if (this.resistencia + qtd > max) {
             this.resistencia = 20;
-        } else if (this.resistencia + qtd < 0) {
-            this.resistencia = 0;
+        } else if (this.resistencia + qtd < 8) {
+            this.resistencia = 8;
         } else {
             this.resistencia += qtd;
         }
     }
 
     public void sabedoriaAlterar(int qtd) {
-        if (this.sabedoria + qtd > 20) {
-            this.sabedoria = 20;
-        } else if (this.sabedoria + qtd < 0) {
-            this.sabedoria = 0;
+        int max=20;
+        if (this.sabedoria + qtd > max) {
+            this.sabedoria = max;
+        } else if (this.sabedoria + qtd < 8) {
+            this.sabedoria = 8;
         } else {
             this.sabedoria += qtd;
         }
@@ -48,10 +51,11 @@ public class Status implements Serializable {
     }
 
     public void inteligenciaAlterar(int qtd) {
-        if (this.inteligencia + qtd > 20) {
-            this.inteligencia = 20;
-        } else if (this.inteligencia + qtd < 0) {
-            this.inteligencia = 0;
+        int max=20;
+        if (this.inteligencia + qtd >max) {
+            this.inteligencia = max;
+        } else if (this.inteligencia + qtd < 8) {
+            this.inteligencia = 8;
         } else {
             this.inteligencia += qtd;
         }
@@ -62,10 +66,11 @@ public class Status implements Serializable {
     }
 
     public void carismaAlterar(int qtd) {
-        if (this.carisma + qtd > 20) {
-            this.carisma = 20;
-        } else if (this.carisma + qtd < 0) {
-            this.carisma = 0;
+        int max=20;
+        if (this.carisma + qtd > max) {
+            this.carisma = max;
+        } else if (this.carisma + qtd < 8) {
+            this.carisma = 8;
         } else {
             this.carisma += qtd;
         }
@@ -76,10 +81,14 @@ public class Status implements Serializable {
     }
 
     public void forcaAlterar(int qtd) {
-        if (this.forca + qtd > 20) {
-            this.forca = 20;
-        } else if (this.forca + qtd < 0) {
-            this.forca = 0;
+        int max=20;
+        if(this.campeaoPrimal){
+            max=24;
+        }
+        if (this.forca + qtd > max) {
+            this.forca = max;
+        } else if (this.forca + qtd < 8) {
+            this.forca = 8;
         } else {
             this.forca += qtd;
         }
@@ -92,8 +101,8 @@ public class Status implements Serializable {
     public void destrezaAlterar(int qtd) {
         if (this.destreza + qtd > 20) {
             this.destreza = 20;
-        } else if (this.destreza + qtd < 0) {
-            this.destreza = 0;
+        } else if (this.destreza + qtd < 8) {
+            this.destreza = 8;
         } else {
             this.destreza += qtd;
         }
