@@ -72,7 +72,33 @@ public class Atributos {
         this.habilidadeAtivas=ordenaHabAtiva(habilidadeAtivas);
         this.habilidadesPassivas=ordenaHabPass(habilidadesPassivas);
     }
+    public Atributos(
+                String nome, int forca, int slotsFeitiço, int altura, int idade,
+            int pesoAtualDoPersonagem, String nomeRaca, int qtdDados, int numLadosDado,
+            InicialPadrao inicial) {
 
+        this.nome = nome;
+        this.pesoCorporal = pesoAtualDoPersonagem;
+        this.idade = idade;
+        this.nomeRaca = nomeRaca;
+        this.qtdDados = qtdDados;
+        this.numLadosDado = numLadosDado;
+
+        this.manaMax = slotsFeitiço;
+        this.manaAtual = this.manaMax;
+        this.hpMax = numLadosDado + forca;
+        this.hpAtual = this.hpMax;
+
+        this.altura = altura;
+        this.level = 1;
+        this.xp = 0;
+
+        this.pesoMaximo = forca * 15;
+        this.pesoAtual = 0;
+
+        this.habilidadeAtivas=ordenaHabAtiva(inicial.getHabilidadeAtivasInicial());
+        this.habilidadesPassivas=ordenaHabPass(inicial.getHabilidadesPassivasInicial());
+    }
     public int getBonusProficiencia() {
         return this.bonusProficiencia;
     }

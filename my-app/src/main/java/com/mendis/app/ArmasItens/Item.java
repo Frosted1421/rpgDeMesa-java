@@ -14,15 +14,15 @@ class Item {
     private final String nomeItem;
     private final String tipoItem;
     private final String descricaoItem;
-    private final int raridade;
+
 
     private final boolean itemVida;
-    private boolean municao;
+    private final boolean municao;
 
     public Item(
             int peso, int valor, int qtd, int hpRestaurada, String nomeItem,
-            String tipoItem, String descricaoItem, int raridade, boolean municao, boolean itemVida, Item proxima) {
-
+            String tipoItem, String descricaoItem, boolean municao, boolean itemVida, Item proxima) {
+            
         this.pesoUnitario = peso;
         this.qtd = qtd;
         this.pesoTotal = this.pesoUnitario * this.qtd;
@@ -31,7 +31,6 @@ class Item {
         this.nomeItem = nomeItem;
         this.tipoItem = tipoItem;
         this.descricaoItem = descricaoItem;
-        this.raridade = raridade;
 
         this.municao = municao;
 
@@ -42,7 +41,7 @@ class Item {
 
     public Item(
             int peso, int valor, int qtd, int hpRestaurada, String nomeItem,
-            String tipoItem, String descricaoItem, int raridade, boolean municao, boolean itemVida) {
+            String tipoItem, String descricaoItem, boolean municao, boolean itemVida) {
 
         this.pesoUnitario = peso;
         this.qtd = qtd;
@@ -52,7 +51,6 @@ class Item {
         this.nomeItem = nomeItem;
         this.tipoItem = tipoItem;
         this.descricaoItem = descricaoItem;
-        this.raridade = raridade;
 
         this.municao = municao;
 
@@ -63,7 +61,9 @@ class Item {
     public boolean itemVida() {
         return this.itemVida;
     }
-
+    public int getValor(){
+        return this.valorUnitario;
+    }
     public int getHp() {
         if (!itemVida()) {
             throw new IllegalArgumentException("Este item não pode ser usado para restaurar hp");
@@ -104,7 +104,9 @@ class Item {
     public void setAnterior(Item anterior) {
         this.anterior = anterior;
     }
-
+    public boolean getIsMunicao(){
+        return municao;
+    }
     public void setProxima(Item proxima) {
         this.proxima = proxima;
     }
@@ -112,7 +114,7 @@ class Item {
     public Item getProxima() {
         return this.proxima;
     }
-
+   
     public void utilizou(int quantidade) {
         if (this.qtd >= 0 && qtd - quantidade >= 0) {
             this.qtd -= quantidade;

@@ -157,11 +157,9 @@ public class HabilidadeAtiva implements Serializable {
 
         this.rodadaContador++;
     }
-
-    public void setAnterior(HabilidadeAtiva anterior) {
-        this.anterior = anterior;
+    public void setAnterior(HabilidadeAtiva hab){
+        this.anterior=hab;
     }
-
     public void setProxima(HabilidadeAtiva proxima) {
         this.proxima = proxima;
     }

@@ -6,9 +6,9 @@ public class BolsaItens {
      * algumas bolsas magicas podem armazenar uma quantidade extrema de items
      * com um peso fixo, podendo ter 90kg de itens dentro mas pesando apenas 6kg
      * 
-     * 
      */
-
+    
+    //todo lista duplamente ligada
     private int pesoAtualBolsa;
     private final int pesoBolsa;
     private final int pesoMaximoBolsa;

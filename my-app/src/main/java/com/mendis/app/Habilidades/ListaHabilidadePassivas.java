@@ -43,14 +43,12 @@ public class ListaHabilidadePassivas implements Serializable {
         }
         StringBuilder builder = new StringBuilder();
         Habilidade atual = primeira;
-        int i = 1;
 
         while (atual != null) {
             builder.append("Habilidade:").append(atual.getNome()).append('\n')
                     .append("Descrição: ").append(atual.getDescricao());
             builder.append('\n').append('\n');
             atual = atual.getProxima();
-            i++;
         }
 
         return builder.toString();

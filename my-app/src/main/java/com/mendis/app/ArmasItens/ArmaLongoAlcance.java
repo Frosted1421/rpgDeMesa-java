@@ -17,8 +17,9 @@ public class ArmaLongoAlcance implements Serializable {
     public int dano;
 
     public ArmaLongoAlcance(
-            String nomeArma, String tipoDano, String tipoMunicao, int dano, int distanciaMaxima,
-            int distanciaMinima, boolean precisaCarregar, int peso) {
+            String nomeArma, String tipoDano, String tipoMunicao, int dano, int distanciaMinima, 
+            int distanciaMaxima, boolean precisaCarregar, int peso) {
+                
         this.peso = peso;
         this.tipoMunicao = tipoMunicao;
         this.precisaCarregar = precisaCarregar;

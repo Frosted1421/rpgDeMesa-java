@@ -34,11 +34,6 @@ public class ListaLog implements Serializable {
         return this.logsQtd;
     }
 
-    private boolean posicaoOcupada(int posicao) {
-
-        return posicao >= 0 && posicao < this.logsQtd;
-
-    }
 
     private log pegaCelula() {
 

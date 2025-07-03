@@ -12,7 +12,9 @@ public class Classe {
     private final boolean isHalfling;
     private final boolean isElfo;
     private final boolean isBardo;
+    protected int slotsFeitico;
 
+    
     public Classe(Atributos novo) {
         this.atributo = novo;
         if (atributo instanceof Barbaro barbaro) {
@@ -35,7 +37,9 @@ public class Classe {
         return atributo.novoLevelHabilidadesAtivas();
 
     }
-
+    public int getSlotsFeitico(){
+        return this.slotsFeitico;
+    }
     public ArrayList<Habilidade> getNovasHabilidadesPassivas() {
         return atributo.novoLevelHabilidadesPassivas();
     }
