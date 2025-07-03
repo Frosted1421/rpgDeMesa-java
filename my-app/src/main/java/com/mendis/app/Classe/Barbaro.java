@@ -1,5 +1,4 @@
-package com.mendis.app.ClassesRacas;
-import com.mendis.app.Atributos;
+package com.mendis.app.Classe;
 import com.mendis.app.Habilidades.*;
 import java.util.ArrayList;
 

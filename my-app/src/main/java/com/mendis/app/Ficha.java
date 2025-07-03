@@ -1,7 +1,8 @@
 package com.mendis.app;
 import com.mendis.app.ArmasItens.*;
+import com.mendis.app.Classe.*;
 import com.mendis.app.Habilidades.*;
-import com.mendis.app.ClassesRacas.*;
+import com.mendis.app.Raca.Raca;
 
 import java.io.Serializable;
 import java.util.ArrayList;

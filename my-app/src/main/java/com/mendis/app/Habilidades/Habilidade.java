@@ -6,8 +6,8 @@ public class Habilidade implements Serializable {
     private Habilidade proxima;
     private Habilidade anterior;
 
-    private Object nomeHabilidade;
-    private Object descricaoHabilidade;
+    private String nomeHabilidade;
+    private String descricaoHabilidade;
     private  int levelLibera;
     
     public Habilidade(Habilidade hab){
@@ -23,14 +23,14 @@ public class Habilidade implements Serializable {
         this.proxima=nova;
     }
     
-    public Habilidade(Object nomeNovo, Object descricaoNova, int levelLibera) {
+    public Habilidade(String nomeNovo, String descricaoNova, int levelLibera) {
         this.levelLibera = levelLibera;
         this.nomeHabilidade = nomeNovo;
         this.descricaoHabilidade = descricaoNova;
 
     }
 
-    public Habilidade(Object nomeNovo, Object descricaoNova, Habilidade nova, int levelLibera) {
+    public Habilidade(String nomeNovo, String descricaoNova, Habilidade nova, int levelLibera) {
         this.levelLibera = levelLibera;
         this.nomeHabilidade = nomeNovo;
         this.descricaoHabilidade = descricaoNova;
@@ -56,11 +56,11 @@ public class Habilidade implements Serializable {
         return this.proxima;
     }
 
-    public Object getNome() {
+    public String getNome() {
         return nomeHabilidade;
     }
 
-    public Object getDescricao() {
+    public String getDescricao() {
         return descricaoHabilidade;
     }
 }

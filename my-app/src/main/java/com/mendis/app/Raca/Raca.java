@@ -1,10 +1,13 @@
-package com.mendis.app.ClassesRacas;
+package com.mendis.app.Raca;
 import com.mendis.app.Habilidades.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Raca implements Serializable {
     private final String raca;
+    private int velocidade;
+    private String tamanho;
+
     private final int bonusForca;
     private final int bonusDestreza;
     private final int bonusResistencia;
@@ -19,7 +22,7 @@ public class Raca implements Serializable {
     public Raca(
             String nome, int bonusF, int bonusD, int bonusR, int bonusS, int bonusC, int bonusI,
             ArrayList<Habilidade> listaInicial,  ArrayList<HabilidadeAtiva> listaHabilAtiva,
-            String[] linguas) {
+            String[] linguas, int velocidade) {
 
         this.raca = nome;
         this.bonusForca = bonusF;

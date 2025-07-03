@@ -1,4 +1,5 @@
-package com.mendis.app;
+package com.mendis.app.Classe;
+import com.mendis.app.Status;
 import com.mendis.app.Habilidades.*;
 import java.util.ArrayList;
 
@@ -99,9 +100,11 @@ public class Atributos {
         this.habilidadeAtivas=ordenaHabAtiva(inicial.getHabilidadeAtivasInicial());
         this.habilidadesPassivas=ordenaHabPass(inicial.getHabilidadesPassivasInicial());
     }
+
     public int getBonusProficiencia() {
         return this.bonusProficiencia;
     }
+    
     private ArrayList<HabilidadeAtiva> ordenaHabAtiva(ArrayList<HabilidadeAtiva>habArray){
             ArrayList<HabilidadeAtiva> habAtiva = habArray;
              boolean trocou;
