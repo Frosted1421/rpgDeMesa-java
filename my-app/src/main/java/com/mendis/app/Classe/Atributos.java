@@ -152,7 +152,12 @@ public class Atributos {
             this.bonusProficiencia += 1;
         }
     }
-
+    public int getPesoMaximo(){
+        return this.pesoMaximo;
+    }
+    public void aumentarPesoMaximo(int forca){
+        this.pesoMaximo=forca*15;
+    }
     public int getLevel() {
         return this.level;
     }
